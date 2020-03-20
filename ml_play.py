@@ -86,37 +86,6 @@ def ml_loop():
                     
                        
             
-"""
-            if ball_y < 150:
-                if platform_x <75:
-                    comm.send_instruction(scene_info.frame, PlatformAction.MOVE_RIGHT)   
-                elif platform_x >75:
-                    comm.send_instruction(scene_info.frame, PlatformAction.MOVE_LEFT)
-                else:
-                    comm.send_instruction(scene_info.frame, PlatformAction.NONE)
-            else:
-                if ball_x + 2 < platform_x + 20:
-                    comm.send_instruction(scene_info.frame, PlatformAction.MOVE_LEFT)
-                elif ball_x + 2 > platform_x + 20:
-                    comm.send_instruction(scene_info.frame, PlatformAction.MOVE_RIGHT)    
-                else :
-                    comm.send_instruction(scene_info.frame, PlatformAction.NONE)
-                    
-            if ball_y <250:
-                if platform_x <75:
-                    comm.send_instruction(scene_info.frame, PlatformAction.MOVE_RIGHT)   
-                elif platform_x >75:
-                    comm.send_instruction(scene_info.frame, PlatformAction.MOVE_LEFT)
-                else:
-                    comm.send_instruction(scene_info.frame, PlatformAction.NONE)
-            else:
 
-
-                if ball_x + 2 < platform_x + 20:
-                    comm.send_instruction(scene_info.frame, PlatformAction.MOVE_LEFT)
-                elif ball_x + 2 > platform_x + 20:
-                    comm.send_instruction(scene_info.frame, PlatformAction.MOVE_RIGHT)    
-                else :
-                    comm.send_instruction(scene_info.frame, PlatformAction.NONE)"""
                 
                 
