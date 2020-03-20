@@ -25,7 +25,9 @@ def ml_loop():
 
     # 2. Inform the game process that ml process is ready before start the loop.
     comm.ml_ready()
-
+    a = 0
+    b = 0
+    c = 0
     # 3. Start an endless loop.
     while True:
         # 3.1. Receive the scene information sent from the game process.
@@ -61,13 +63,46 @@ def ml_loop():
                 else:
                     comm.send_instruction(scene_info.frame, PlatformAction.NONE)
             else:
+                if ball_y - a >0:#down
+                    if ball_x - b >0:#right 395-ball_y == height 
+                        if (395 - ball_y)>(200-ball_x): #bounce
+                            c = 200- ((395 - ball_y)-(200-ball_x))
+                        else:
+                            c = ball_x + (395 - ball_y)    
+
+                        #comm.send_instruction(scene_info.frame, PlatformAction.MOVE_RIGHT)
+                    else:#left
+                        if (395 - ball_y)>ball_x: #bounce
+                            c = ((395 - ball_y)-ball_x)
+                        else:
+                            c = ball_x - (395 - ball_y)   
+                    b = ball_x
+                    if platform_x <(c-20):
+                        comm.send_instruction(scene_info.frame, PlatformAction.MOVE_RIGHT)   
+                    elif platform_x >(c-20):
+                        comm.send_instruction(scene_info.frame, PlatformAction.MOVE_LEFT)
+                    else:
+                        comm.send_instruction(scene_info.frame, PlatformAction.NONE)
+                    
+                       
+            
+"""
+            if ball_y < 150:
+                if platform_x <75:
+                    comm.send_instruction(scene_info.frame, PlatformAction.MOVE_RIGHT)   
+                elif platform_x >75:
+                    comm.send_instruction(scene_info.frame, PlatformAction.MOVE_LEFT)
+                else:
+                    comm.send_instruction(scene_info.frame, PlatformAction.NONE)
+            else:
                 if ball_x + 2 < platform_x + 20:
                     comm.send_instruction(scene_info.frame, PlatformAction.MOVE_LEFT)
                 elif ball_x + 2 > platform_x + 20:
                     comm.send_instruction(scene_info.frame, PlatformAction.MOVE_RIGHT)    
                 else :
                     comm.send_instruction(scene_info.frame, PlatformAction.NONE)
-            """if ball_y <250:
+                    
+            if ball_y <250:
                 if platform_x <75:
                     comm.send_instruction(scene_info.frame, PlatformAction.MOVE_RIGHT)   
                 elif platform_x >75:
